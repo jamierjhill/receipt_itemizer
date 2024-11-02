@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Receipt Manager</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f0f8ff; padding: 50px; }
+        .container { display: flex; flex-direction: column; gap: 20px; }
+        .top-container { background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); }
+        .form-column, .receipt-column { width: 45%; background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); }
+        .bottom-container { display: flex; gap: 20px; }
+        h2, h3, h4 { color: #4682b4; }
+        ul { list-style-type: none; padding: 0; }
+        li { margin: 10px 0; }
+        form { text-align: left; }
+        label, input { display: block; width: 100%; margin-bottom: 10px; }
+        input[type="submit"] { background-color: #4682b4; color: white; border: none; padding: 10px; cursor: pointer; }
+        .back-button { text-align: left; margin-bottom: 20px; }
+        .back-button a { background-color: #4682b4; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="top-container">
+            <div class="back-button">
+                <a href="{{ url_for('home') }}">Back to Home</a>
+            </div>
+            <h2>Initialize Receipt</h2>
+            <form action="{{ url_for('initialize_receipt') }}" method="post">
+                <label>Enter Receipt Name:</label>
+                <input type="text" name="name" required>
+                <label>Enter Eaters (comma-separated):</label>
+                <input type="text" name="eaters" required>
+                <input type="submit" value="Initialize Receipt">
+            </form>
+        </div>
+
+        <div class="bottom-container">
+            <div class="form-column">
+                <h2>Add Item</h2>
+                <form action="{{ url_for('add_item') }}" method="post">
+                    <label>Item Name:</label>
+                    <input type="text" name="item_name" required>
+                    <label>Item Price (£):</label>
+                    <input type="text" name="item_price" required>
+                    <label>Eaters (comma-separated, or 'ALL'):</label>
+                    <input type="text" name="eaters_input" required>
+                    <input type="submit" value="Add Item">
+                </form>
+            </div>
+
+            <div class="receipt-column">
+                <h3>Current Receipt: {{ receipt_data['receipt_name'] }}</h3>
+                <ul>
+                    {% for item in receipt_data['items'] %}
+                        <li>{{ item['name'] }}: £{{ "%.2f"|format(item['price']) }} (shared by {{ ", ".join(item['eaters']) }})</li>
+                    {% endfor %}
+                </ul>
+                <p>Total: £{{ "%.2f"|format(receipt_data['total_sum']) }}</p>
+                <h4>Cost Breakdown Per Person</h4>
+                <ul>
+                    {% for person, amount in receipt_data['per_person_share'].items() %}
+                        <li>{{ person }}: £{{ "%.2f"|format(amount) }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
