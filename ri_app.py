@@ -13,7 +13,7 @@ import time
 import atexit
 
 # Start ngrok as a subprocess with inline auth token
-ngrok_process = subprocess.Popen(['./ngrok', 'http', '5000', '--authtoken', '2o4pfmzyiwmBZcY4vhwQiYsOiJS_FsuQB2nueaQ863GcU2ya'])
+ngrok_process = subprocess.Popen(['./ngrok', 'http', '5000', '--authtoken', ''])
 time.sleep(3)  # Wait for ngrok to initialize
 
 # Retrieve the public URL from ngrok’s local web interface
