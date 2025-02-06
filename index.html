@@ -4,29 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Receipt Itemiser App</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Optional link to your CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header {
+            background-color: #007BFF;
+            color: white;
+            padding: 20px;
+            font-size: 24px;
+        }
+        section {
+            margin: 40px auto;
+            padding: 20px;
+            background: white;
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .btn-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        .btn-link:hover {
+            background-color: #218838;
+        }
+        footer {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>Welcome to the Receipt Itemiser App!</h1>
+        <h1>Receipt Itemiser App</h1>
     </header>
 
     <section>
+        <h2>Break Down Your Receipts with Ease!</h2>
         <p>
-            The Receipt Itemizer is a tool that helps you break down the items on your receipt and
+            The Receipt Itemiser is a tool that helps you break down the items on your receipt and
             calculate the total cost, including taxes and tips. It's simple, fast, and perfect for
             managing your shopping or meal receipts.
         </p>
 
-        <p>
-            To get started, click the link below to access the app:
-        </p>
-
-        <a href="https://your-flask-app-link.com" target="_blank" class="btn-link">Go to the Receipt Itemiser</a>
+        <p>Click below to access the app:</p>
+        <a href="https://your-flask-app-link.com" target="_blank" class="btn-link">Go to the App</a>
     </section>
 
     <footer>
-        <p>Jamie</p>
+        <p>&copy; 2025 Jamie. All rights reserved.</p>
     </footer>
 </body>
 </html>
+
